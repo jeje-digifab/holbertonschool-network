@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Write a Bash script that displays all active IPv4 IPs on the machine it’s executed on.
-# Get all IPv4 addresses using hostname -I
-ip=$(hostname -I | awk '{print $1}')
+# Get all IPv4 addresses using ifconfig
+ip=$(ifconfig | grep -oP '(?<=inet\s)\d+(\.\d+){3}')
 # Displaying IP addresses
 echo "$ip"
